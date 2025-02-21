@@ -106,8 +106,7 @@ from orders o
 join customers c on o.customer_id = c.customer_id
 group by o.customer_id;
 -- 6.2 Thống kê tổng doanh thu của từng nhân viên trong năm hiện tại. Thông tin gồm : mã nhân viên, tên nhân viên, doanh thu
-select employee_id,employee_name,revenue
-from employees;
+select ep.employee_id,ep.employee_name,sum(od.total_amount) as tongdoanhthu  from orders od join Employees ep on od.employee_id=ep.employee_id group by  ep.employee_id;
 -- 6.3 Thống kê những sản phẩm có số lượng đặt hàng lớn hơn 100 trong tháng hiện tại. Thông tin gồm : mã sản phẩm, tên sản phẩm, số lượt đặt và sắp xếp theo số lượng giảm dần
 select p.product_id,p.product_name,sum(p.quantity) as order_quantity
 from products p
